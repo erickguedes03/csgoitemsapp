@@ -1,10 +1,11 @@
 package br.com.guedes.csgoitemsapp.ui.main
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.guedes.csgoitemsapp.R
-import br.com.guedes.csgoitemsapp.databinding.ItemRowBinding
+import br.com.guedes.csgoitemsapp.databinding.GridItemRowBinding
 import br.com.guedes.csgoitemsapp.model.Item
 import coil.load
 
@@ -19,7 +20,7 @@ class ItemAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = GridItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return VH(binding)
     }
 
@@ -31,13 +32,18 @@ class ItemAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    inner class VH(private val binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class VH(private val binding: GridItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Item) {
-            binding.tvName.text = item.name ?: item.market_hash_name ?: "Sem nome"
-            binding.tvSub.text = item.weapon ?: ""
+            binding.tvName.text = item.name
             binding.imgItem.load(item.image) {
                 crossfade(true)
                 placeholder(R.drawable.ic_launcher_background)
+            }
+            try {
+                val color = Color.parseColor(item.rarityColor)
+                binding.rarityIndicator.setBackgroundColor(color)
+            } catch (e: Exception) {
+                binding.rarityIndicator.setBackgroundColor(Color.GRAY)
             }
         }
     }

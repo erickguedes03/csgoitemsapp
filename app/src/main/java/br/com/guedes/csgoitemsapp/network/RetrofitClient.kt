@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://bymykel.github.io/CSGO-API/api/"
+    private const val BASE_URL = "https://raw.githubusercontent.com/ByMykel/CSGO-API/main/public/api/"
 
     val api: CsgoApi by lazy {
         Retrofit.Builder()

@@ -1,12 +1,13 @@
 package br.com.guedes.csgoitemsapp.network
 
-import br.com.guedes.csgoitemsapp.model.Item
+import br.com.guedes.csgoitemsapp.model.Skin
+import br.com.guedes.csgoitemsapp.model.Sticker
 import retrofit2.http.GET
 
 interface CsgoApi {
     @GET("en/skins.json")
-    suspend fun getSkins(): List<Item>
+    suspend fun getSkins(): List<Skin>
 
     @GET("en/stickers.json")
-    suspend fun getStickers(): List<Item>
+    suspend fun getStickers(): List<Sticker>
 }
