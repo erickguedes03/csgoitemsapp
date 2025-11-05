@@ -68,11 +68,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 // RecyclerView, CardView
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.cardview:cardview:1.0.0")
-// Coil para carregar imagens
-    implementation("io.coil-kt:coil:2.4.0")
-// Material Components (opcional)
-    implementation("com.google.android.material:material:1.9.0")
+// Coil para carregar imagens (atualizado)
+    implementation("io.coil-kt:coil:2.7.0")
+// Material Components (atualizado)
+    implementation("com.google.android.material:material:1.13.0")
+// ExoPlayer para reprodução de vídeo mais robusta (atualizado)
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
 // Navigation/other (opcional)
 }

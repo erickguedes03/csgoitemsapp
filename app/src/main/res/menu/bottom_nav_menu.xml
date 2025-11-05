@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_skins"
-        android:title="Skins" />
+        android:title="@string/nav_skins" />
     <item
         android:id="@+id/nav_stickers"
-        android:title="Stickers" />
+        android:title="@string/nav_stickers" />
+    <item
+        android:id="@+id/nav_highlights"
+        android:title="@string/nav_highlights" />
+    <item
+        android:id="@+id/nav_crates"
+        android:title="@string/nav_crates" />
 </menu>

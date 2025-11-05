@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CsgoItemsApp</string>
+    <string name="nav_skins">Skins</string>
+    <string name="nav_stickers">Stickers</string>
+    <string name="nav_highlights">Highlights</string>
+    <string name="nav_crates">Crates</string>
+    <string name="img_detail_desc">Item image</string>
+    <string name="contains">Contains</string>
+    <string name="contains_rare">Contains (Rare)</string>
+    <string name="back">Back</string>
 </resources>

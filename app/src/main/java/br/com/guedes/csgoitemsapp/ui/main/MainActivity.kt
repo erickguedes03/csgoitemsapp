@@ -7,8 +7,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.guedes.csgoitemsapp.R
 import br.com.guedes.csgoitemsapp.databinding.ActivityMainBinding
+import br.com.guedes.csgoitemsapp.model.Crate
 import br.com.guedes.csgoitemsapp.model.Item
 import br.com.guedes.csgoitemsapp.network.RetrofitClient
+import br.com.guedes.csgoitemsapp.ui.detail.CrateDetailActivity
 import br.com.guedes.csgoitemsapp.ui.detail.DetailActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ItemAdapter
     private var allItems: List<Item> = emptyList()
+    private var cratesById: Map<String, Crate> = emptyMap()
     private var currentCategory = R.id.nav_skins // Default to skins
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         // Adapter and LayoutManager setup
         adapter = ItemAdapter(emptyList()) { item ->
-            val intent = Intent(this, DetailActivity::class.java).apply {
-                putExtra("item", item)
-            }
-            startActivity(intent)
+            handleItemClick(item)
         }
         binding.recycler.layoutManager = GridLayoutManager(this, 2) // 2 columns grid
         binding.recycler.adapter = adapter
@@ -62,12 +62,34 @@ class MainActivity : AppCompatActivity() {
         loadItemsForCategory()
     }
 
+    private fun handleItemClick(item: Item) {
+        if (currentCategory == R.id.nav_crates) {
+            val crate = cratesById[item.id]
+            if (crate != null) {
+                val intent = Intent(this, CrateDetailActivity::class.java).apply {
+                    putExtra("crate", crate)
+                }
+                startActivity(intent)
+                return
+            }
+        }
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra("item", item)
+        }
+        startActivity(intent)
+    }
+
     private fun filter(query: String?) {
         val q = query?.trim()?.lowercase() ?: ""
         val filtered = if (q.isEmpty()) {
             allItems
         } else {
-            allItems.filter { it.name.lowercase().contains(q) }
+            allItems.filter { item ->
+                val nameMatch = item.name?.lowercase()?.contains(q) ?: false
+                val subtextMatch = item.subtext?.lowercase()?.contains(q) ?: false
+                val extraMatch = item.extraSummary?.lowercase()?.contains(q) ?: false
+                nameMatch || subtextMatch || extraMatch
+            }
         }
         adapter.updateList(filtered)
     }
@@ -78,6 +100,8 @@ class MainActivity : AppCompatActivity() {
                 val items = when (currentCategory) {
                     R.id.nav_skins -> fetchSkins()
                     R.id.nav_stickers -> fetchStickers()
+                    R.id.nav_highlights -> fetchHighlights()
+                    R.id.nav_crates -> fetchCrates()
                     else -> emptyList()
                 }
                 allItems = items
@@ -112,6 +136,40 @@ class MainActivity : AppCompatActivity() {
                 image = sticker.image,
                 subtext = sticker.rarity?.name ?: "",
                 rarityColor = sticker.rarity?.color
+            )
+        }
+    }
+
+    private suspend fun fetchHighlights(): List<Item> {
+        return RetrofitClient.api.getHighlights().map { h ->
+            Item(
+                id = h.id,
+                name = h.name,
+                description = h.description,
+                image = h.image,
+                subtext = h.tournament_event ?: "",
+                rarityColor = null,
+                videoUrl = h.video,
+                extraSummary = "${h.team0 ?: ""} vs ${h.team1 ?: ""} • ${h.map ?: ""}"
+            )
+        }
+    }
+
+    private suspend fun fetchCrates(): List<Item> {
+        val crates = RetrofitClient.api.getCrates()
+        // store map for later detail view
+        cratesById = crates.associateBy { it.id }
+        return crates.map { c ->
+            val containsSummary = (c.contains ?: emptyList()).take(3).mapNotNull { it.name }.joinToString(", ")
+            Item(
+                id = c.id,
+                name = c.name,
+                description = c.description,
+                image = c.image ?: "",
+                subtext = c.type ?: "",
+                rarityColor = null,
+                videoUrl = null,
+                extraSummary = if (containsSummary.isNotEmpty()) containsSummary else null
             )
         }
     }
