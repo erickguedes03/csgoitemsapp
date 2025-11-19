@@ -26,7 +26,4 @@ Veja abaixo uma demonstração do aplicativo:
 
 ## Requisitos
 - Android Studio
-- SDK Android 8.0 ou superior
 
-## Licença
-Este projeto está sob a licença MIT.
