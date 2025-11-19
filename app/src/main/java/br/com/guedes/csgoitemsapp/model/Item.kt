@@ -9,11 +9,12 @@ import java.io.Serializable
  */
 data class Item(
     val id: String,
-    val name: String,
+    val name: String?,
     val description: String?,
     val image: String,
-    val subtext: String?, // Used for weapon, rarity, event, etc.
-    val rarityColor: String?, // To display a color indicator in the UI
+    val subtext: String?,
+    val rarityColor: String?,
+    val rarityName: String? = null, // Added for filtering by name
     val videoUrl: String? = null, // optional video for highlights
     val extraSummary: String? = null // optional summary (e.g., crate contains brief)
 ) : Serializable

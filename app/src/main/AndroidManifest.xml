@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="br.com.guedes.csgoitemsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -29,6 +30,18 @@
             android:name=".ui.detail.CrateDetailActivity"
             android:exported="false"
             android:label="Crate" />
+
+        <!-- Item detail (skins/stickers/highlights) -->
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false"
+            android:label="Detail" />
+
+        <!-- Agent detail activity -->
+        <activity
+            android:name=".ui.detail.AgentDetailActivity"
+            android:exported="false"
+            android:label="Agent" />
     </application>
 
 

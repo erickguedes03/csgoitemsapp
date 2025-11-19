@@ -1,11 +1,17 @@
 <resources>
-    <string name="app_name">CsgoItemsApp</string>
+    <string name="app_name">CS:GO Itens</string>
     <string name="nav_skins">Skins</string>
-    <string name="nav_stickers">Stickers</string>
-    <string name="nav_highlights">Highlights</string>
-    <string name="nav_crates">Crates</string>
-    <string name="img_detail_desc">Item image</string>
-    <string name="contains">Contains</string>
-    <string name="contains_rare">Contains (Rare)</string>
-    <string name="back">Back</string>
+    <string name="nav_stickers">Adesivos</string>
+    <string name="nav_highlights">Destaques</string>
+    <string name="nav_crates">Caixas</string>
+    <string name="nav_agents">Agentes</string>
+    <string name="img_detail_desc">Imagem do item</string>
+    <string name="contains">Contém</string>
+    <string name="contains_rare">Contém (Raro)</string>
+    <string name="back">Voltar</string>
+    <string name="search_hint_skins">Pesquisar Skins&#8230;</string>
+    <string name="search_hint_stickers">Pesquisar Adesivos&#8230;</string>
+    <string name="search_hint_highlights">Pesquisar Destaques&#8230;</string>
+    <string name="search_hint_crates">Pesquisar Caixas&#8230;</string>
+    <string name="search_hint_agents">Pesquisar Agentes&#8230;</string>
 </resources>

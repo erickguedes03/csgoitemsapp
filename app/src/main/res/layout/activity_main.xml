@@ -18,14 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="CS:GO Items"
+            app:title=""
             app:titleTextColor="@android:color/white" />
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:queryHint="Search by name..." />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,6 +38,8 @@
         android:background="@drawable/bottom_nav_bg"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconSize="28dp"
+        app:labelVisibilityMode="labeled" />
 
 </RelativeLayout>

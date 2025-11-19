@@ -1,77 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark_blue">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/white" />
 
-        <ImageView
-            android:id="@+id/imgDetail"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/img_detail_desc"
-            tools:ignore="ContentDescription" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <!-- PlayerView ExoPlayer para highlights -->
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/playerView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:visibility="gone"
-            android:layout_marginTop="8dp"
-            app:use_controller="true" />
-
-        <!-- ProgressBar para indicar buffering/loading do player -->
-        <ProgressBar
-            android:id="@+id/playerProgress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="8dp" />
-
-        <!-- Back button -->
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:id="@+id/tvDetailName"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tvDetailSub"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tvExtraSummary"
-            android:layout_marginTop="12dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-    </LinearLayout>
-</ScrollView>
+            <ImageView
+                android:id="@+id/imgDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="360dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/img_detail_desc"
+                tools:ignore="ContentDescription" />
+
+            <!-- PlayerView ExoPlayer para highlights -->
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                app:use_controller="true" />
+
+            <!-- ProgressBar para indicar buffering/loading do player -->
+            <ProgressBar
+                android:id="@+id/playerProgress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                style="@style/Detail.Title"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvDetailSub"
+                style="@style/Detail.SubTitle"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/Detail.Body"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvExtraSummary"
+                style="@style/Detail.SubTitle"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

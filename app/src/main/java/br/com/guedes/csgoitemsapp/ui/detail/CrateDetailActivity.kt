@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
@@ -19,8 +20,9 @@ class CrateDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crate_detail)
 
-        val btnBack = findViewById<Button>(R.id.btnCrateBack)
-        btnBack.setOnClickListener { onBackPressed() }
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val crate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getSerializableExtra("crate", Crate::class.java)
@@ -30,6 +32,7 @@ class CrateDetailActivity : AppCompatActivity() {
         }
 
         crate?.let { c ->
+            supportActionBar?.title = c.name
             val imgHeader = findViewById<ImageView>(R.id.imgCrateHeader)
             val tvName = findViewById<TextView>(R.id.tvCrateName)
             val tvType = findViewById<TextView>(R.id.tvCrateType)
@@ -54,5 +57,10 @@ class CrateDetailActivity : AppCompatActivity() {
             recyclerRare.layoutManager = LinearLayoutManager(this)
             recyclerRare.adapter = rareAdapter
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

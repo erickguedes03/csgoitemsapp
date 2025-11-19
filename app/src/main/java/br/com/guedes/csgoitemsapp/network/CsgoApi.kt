@@ -1,5 +1,6 @@
 package br.com.guedes.csgoitemsapp.network
 
+import br.com.guedes.csgoitemsapp.model.Agent
 import br.com.guedes.csgoitemsapp.model.Crate
 import br.com.guedes.csgoitemsapp.model.Highlight
 import br.com.guedes.csgoitemsapp.model.Skin
@@ -18,4 +19,7 @@ interface CsgoApi {
 
     @GET("en/crates.json")
     suspend fun getCrates(): List<Crate>
+
+    @GET("en/agents.json")
+    suspend fun getAgents(): List<Agent>
 }

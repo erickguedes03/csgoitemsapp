@@ -3,7 +3,6 @@ package br.com.guedes.csgoitemsapp.ui.detail
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
@@ -29,9 +28,11 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
+
         progressBar = findViewById(R.id.playerProgress)
-        val btnBack = findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
         val item = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getSerializableExtra("item", Item::class.java)
@@ -41,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         item?.let {
-            binding.tvDetailName.text = it.name
+            supportActionBar?.title = it.name
             binding.tvDetailSub.text = it.subtext
             binding.tvDescription.text = it.description ?: "No description available."
             binding.imgDetail.load(it.image) {
@@ -121,5 +122,10 @@ class DetailActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         releasePlayer()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

@@ -2,14 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_skins"
+        android:icon="@drawable/ic_skin_colored"
         android:title="@string/nav_skins" />
     <item
         android:id="@+id/nav_stickers"
+        android:icon="@drawable/ic_sticker_colored"
         android:title="@string/nav_stickers" />
     <item
         android:id="@+id/nav_highlights"
+        android:icon="@drawable/ic_highlight_colored"
         android:title="@string/nav_highlights" />
     <item
         android:id="@+id/nav_crates"
+        android:icon="@drawable/ic_crate_colored"
         android:title="@string/nav_crates" />
+    <item
+        android:id="@+id/nav_agents"
+        android:icon="@drawable/ic_agent_colored"
+        android:title="@string/nav_agents" />
 </menu>

@@ -22,12 +22,15 @@
         <TextView
             android:id="@+id/tvContainName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary_dark"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvContainRarity"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary_dark"/>
 
     </LinearLayout>
 </LinearLayout>
