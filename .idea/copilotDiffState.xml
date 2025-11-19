@@ -3,6 +3,14 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/README.md" />
+              <option name="updatedContent" value="# CS:GO Items App&#10;&#10;Este é um aplicativo Android para visualização e gerenciamento de itens do CS:GO.&#10;&#10;## Funcionalidades&#10;- Visualização de itens do CS:GO&#10;- Gerenciamento de inventário&#10;- Interface intuitiva&#10;&#10;## Estrutura do Projeto&#10;- `app/`: Código-fonte do aplicativo Android&#10;- `demo/`: Arquivos de demonstração&#10;- `build.gradle.kts`, `settings.gradle.kts`: Configuração do projeto Gradle&#10;&#10;## Como executar&#10;1. Instale o Android Studio.&#10;2. Clone este repositório.&#10;3. Abra o projeto no Android Studio.&#10;4. Conecte um dispositivo ou use um emulador.&#10;5. Execute o aplicativo.&#10;&#10;## Demonstração&#10;Veja abaixo uma demonstração do aplicativo:&#10;&#10;![Demonstração](demo/teste.gif)&#10;&#10;## Requisitos&#10;- Android Studio&#10;- SDK Android 8.0 ou superior&#10;&#10;## Licença&#10;Este projeto está sob a licença MIT." />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <value>
             <PendingDiffInfo>
